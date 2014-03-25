@@ -1,0 +1,31 @@
+body {
+	display: block;
+	margin: 8px;
+}
+
+div {
+display: block;
+}
+
+.form-home{
+	max-width: 30%;
+	padding: auto;
+	margin: 0 auto;
+	margin-top: 20%;
+
+}
+
+
+.label-filter{
+	display: block;
+}
+
+.btn-filter{
+	float: right;
+
+}
+
+#sendcol{
+
+	background-color: none;
+}

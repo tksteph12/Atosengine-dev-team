@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>RRClient</title>
+		<!--basic styles-->
+		
+		<link rel="Stylesheet" href="styles/styles.css" type="text/css" />
+		<link rel="Stylesheet" href="vendors/bootstrap/css/bootstrap.min.css" type="text/css" />
+		<link rel="Stylesheet" href="styles/grid.css" type="text/css" />
+
+				
+		<!-- JQuery scripts-->
+		<script src="vendors/jquery/js/jquery-2.1.0.min.js"></script>
+
+		<!-- Bootstrap scripts-->
+		<script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+
+		
+		<!--basic scripts-->
+		
+		<script src="js/RRHelper.js"></script>
+		<script src="js/Launcher.js"></script>
+
+
+		<!--inline scripts related to this page-->
+
+    
+	</head>
+
+	<body>
+		
+		<div class="container">
+			<div class="page-header">
+		        <h1>Bootstrap grid examples</h1>
+		        <p class="lead">Basic grid layouts to get you familiar with building within the Bootstrap grid system.</p>
+      		</div>
+
+      		<div>
+      			<form class="form-home">
+      				<button class="btn btn-lg btn-primary btn-block" type="submit">Créer une Ressource</button>
+      				<button class="btn btn-lg btn-primary btn-block" type="submit">Rechercher une Ressource</button>
+
+      			</form>
+
+      		</div>
+
+      		<div>
+      		</div>
+			
+
+			<div id="filters" class="row">
+				<div class="col-md-12">
+					<!-- Here is the form's main area-->
+					<form name="filter" method="post" action="" onsubmit="lookup(filter)">
+						
+						<p>
+							<label for="codegcm" class="label-filter">ID<span class="star">*</span>
+								
+							</label>
+    						<input type="number" pattern="[0-9]*" maxlength="5" min="0" name="idrr" id="rrid">
+						</p>
+						<p>
+							<label for="codegcm" class="label-filter">GCM Code <span class="star">*</span>
+							</label>
+							<select id="location" name="location" autofocus>
+								<option value="AD"> AD </option>
+								<option value="BMC"> BMC </option>
+								<option value="ARC"> ARC </option>
+							</select>
+							<label for="codegcm">Level<span class="star">*</span>
+							</label>
+    						<input type="number" pattern="[0-9]*" maxlength="5" min="0" name="gcmlevel" id="nivgcm" required="">
+
+						</p>
+						<p>
+							<label for="lcompetences" class="label-filter">Competences:<span class="star">*</span></label>
+    						<input required="" type="text" name="lcompetences" id="lcompetences" placeholder="séparez par des ; ">
+						</p>
+						<p>
+							<label for="ladresse" class="label-filter">Localisation:<span class="star">*</span></label>
+    						<input required="" type="text" name="ladresse" id="ladresse" placeholder="Ville">
+
+    						<label for="lupdate">Last Update:<span class="star">*</span></label>
+							<input id="lupdate" name="lupdate" type="date" required="">
+
+							<button class="btn btn-lg btn-primary btn-filter" type="submit">Rechercher</button>
+						</p>
+					</form>
+
+
+				</div>
+				
+			</div>
+
+			<div id="searchresult" class="row">
+				<!-- Here is the area for the search being done before-->
+
+			</div>
+
+
+
+			
+				<div id='test'></div>
+
+			
+		</div>
+		
+		<script type="text/javascript">
+		function hideFilters (argument) {
+			$("#filters").hide();
+		}
+
+		$( document ).ready(function() {
+			//hideFilters();
+
+		});
+			
+
+		</script>
+		
+
+	</body>
+</html>
