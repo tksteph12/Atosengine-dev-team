@@ -1,0 +1,18 @@
+<div method="get" name="searchform" >
+  <input id="idrr" name="idrr" type="text" placeholder="ID RR">
+  <input type="text" placeholder="Compétences">
+  <select id="idgcm" name="gcm">
+  </select>
+  <select name="ville">
+      <option value="tous">Toute villes</option>
+      <option value="lyon">Lyon</option>
+      <option value="paris">Paris</option>
+  </select>
+  <select name="client">
+      <option value="tous">Tout clients</option>
+      <option value="edf">EDF</option>
+      <option value="renault">Renault</option>
+  </select>
+  <p>Parus depuis le:</p><input type="date" name="datefrom" placeholder="Depuis le">
+  <input type="submit" onClick="setViewPanel('listRR.html');getSearch()">
+</div>
