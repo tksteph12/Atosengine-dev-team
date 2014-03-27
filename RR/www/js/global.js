@@ -48,8 +48,9 @@ function setSearch() {
 }
 
 
-function fillTable(dataArea, source) {
+function fillTable(id, source) {
     //fonctionn pour remplir un tableau de données
+      var dataArea = document.getElementById(id);
       var row, dataRow;
       var i, j, k, l;
       var text = (dataArea.innerText?"innerText":(dataArea.textContent? "textContent": "innerHTML"));
@@ -70,7 +71,7 @@ function fillTable(dataArea, source) {
         dataRow = source[i];
         row.id = dataRow[0]; 
 
-        for (k = 1; k < 4; k++) { 
+        for (k = 1; k < 5; k++) { 
             cell = row.insertCell(k-1);
             cell[text] = dataRow[k];
         }

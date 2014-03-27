@@ -264,15 +264,7 @@ caption {
         caption-side:top;
         text-align:center;
     }   
-tr.odd td   {
-    background:#f7fbff;
-    }
-tr.odd .column1 {
-    background:#f4f9fe;
-    }   
-.column1    {
-    background:#f9fcfe;
-    }
+
 td {
     color:#678197;
     border-bottom:1px solid #e5eff8;
@@ -310,5 +302,13 @@ tfoot th em {
     font-style: normal;
     }   
 
-
+tr.odd td   {
+    background:#f7fbff;
+    }
+tr.odd .column1 {
+    background:#f4f9fe;
+    }   
+.column1    {
+    background:#f9fcfe;
+    }
     
