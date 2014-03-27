@@ -30,8 +30,8 @@ function retrieveFrom(url){
     return results;
 }
 
-function setViewPanel(htmlfile) {
-    $('#viewpanel').load(htmlfile);
+function setViewPanel(id,htmlfile) {
+    $('#'+id).load(htmlfile);
 }
 
 
@@ -46,3 +46,33 @@ function setSearch() {
     alert("ok");
     $("#setidrr").html("idrr");
 }
+
+
+function fillTable(dataArea, source) {
+    //fonctionn pour remplir un tableau de données
+      var row, dataRow;
+      var i, j, k, l;
+      var text = (dataArea.innerText?"innerText":(dataArea.textContent? "textContent": "innerHTML"));
+      i = dataArea.rows.length;
+ 
+      while (i--) {
+         dataArea.deleteRow(i);
+      }
+
+     for (i = 0,j = source.length; i < j; i++) {
+        /* The first "cell" in the source data 
+         * for each row is the row ID. The for-loop
+         * starts with k = 1 as the display data and 
+         * stops at 5 because only four columns out 
+         * of six are displayed.
+         */
+        row = dataArea.insertRow(i);
+        dataRow = source[i];
+        row.id = dataRow[0]; 
+
+        for (k = 1; k < 4; k++) { 
+            cell = row.insertCell(k-1);
+            cell[text] = dataRow[k];
+        }
+   }
+ }
