@@ -1,18 +1,16 @@
 <div method="get" name="searchform" >
   <input id="idrr" name="idrr" type="text" placeholder="ID RR">
-  <input type="text" placeholder="Compétences">
+  <input id="keyword" type="text" placeholder="Mots clés séparer par un ' ; ' ">
   <select id="idgcm" name="gcm">
+    <option value="tous">Tout GCM</option>
+      <option value="lyon">AD</option>
+      <option value="paris">SM</option>
   </select>
-  <select name="ville">
+  <select id="city" name="city">
       <option value="tous">Toute villes</option>
       <option value="lyon">Lyon</option>
       <option value="paris">Paris</option>
   </select>
-  <select name="client">
-      <option value="tous">Tout clients</option>
-      <option value="edf">EDF</option>
-      <option value="renault">Renault</option>
-  </select>
-  <p>Parus depuis le:</p><input type="date" name="datefrom" placeholder="Depuis le">
+  <p>Parus depuis le:</p><input id="datefrom" name="datefrom" type="date" placeholder="Depuis le">
   <input type="submit" onClick="setViewPanel('listRR.html');getSearch()">
 </div>

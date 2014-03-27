@@ -16,38 +16,10 @@
             <section class="panel">
                  
                 <div id="viewpanel"><div>
-
+                <div id="searchresults"></div>
             </section>
         </section>
 
-        <section class="view">
-            <section class="panel">
-                 
-                <div id="searchresults">
-                    <div>
-                    Rappel Des paramètres entrées pour la recherche
-                    </div>
-
-                    <div id="tableDiv">
-                        <table id="tbl" class="" summary="">
-                            <thead>
-                                <tr>
-                                    <th id="lressource">Name:</th>
-                                    <th id="dlupdate">Role</th>
-                                    <th id="lshow">City</th>
-                                    <th id="lshow">GCM</th>
-                                </tr></thead>
-                            <tbody id="data-area">
-                                <tr>
-                                    <td>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-            </section>
-        </section>
 
         <script src="js/global.js"></script>
         <script src="vendors/jquery/js/jquery-2.1.0.min.js"></script>
@@ -56,6 +28,8 @@
         <script type="text/javascript">
 
           $(document).ready(function() {
+            setViewPanel('viewpanel','form.html');
+        /*    //fillSelectBox();
             //setViewPanel('viewpanel','form.html');
             //fileSelectBox();
             //dataArea = $('#tbl');
@@ -129,9 +103,9 @@
                 dataArea = $('#data-area');
 
             }
-            fillTable('data-area', dataArray);
+            //fillTable('data-area', dataArray);
 
-          
+          */
           });
         
         </script>

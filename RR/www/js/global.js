@@ -1,6 +1,6 @@
-var first = true;
 
-function fileSelectBox() {
+// -- fill selected box with database
+function fillSelectBox() {
     var selectBox = $('#idgcm');
     var url = "http://192.168.43.138:8080/RestWSDB/webresources/com.atos.restfull.gcm";
     var options = retrieveFrom(url);
@@ -11,9 +11,8 @@ function fileSelectBox() {
     }
 }
 
-
+// -- retrieves the data from the url passed in parameters
 function retrieveFrom(url){
-    //retrieves the data from the url passed in parameters
     var results;
     $.ajax({
         type: "GET",
@@ -30,23 +29,44 @@ function retrieveFrom(url){
     return results;
 }
 
+
+// -- load html file
 function setViewPanel(id,htmlfile) {
     $('#'+id).load(htmlfile);
 }
 
 
-var idrr = 0;
-function getSearch() {
-    var val = $('#idrr');
-    idrr = val.val();
-    
+// -- filter parameters
+var idrr;
+var keyword;
+var idgcm;
+var city;
+var client;
+var datefrom;
+
+
+// -- get parameters of the form
+function getDataForm() {
+    idrr = $('#idrr').val();
+    keyword = $('#idrr').val();
+    idgcm = $('#idgcm').val();
+    city = $('#city').val();
+    idrr = $('#idrr').val();
+    datefrom = $('#datefrom').val();
 }
 
-function setSearch() {
-    alert("ok");
+
+// -- get the search from parameters
+function getSearchResult() {
+
+    if ( idrr != '' ) {
+        alert("idrr search");
+        var url = "http://192.168.43.138:8080/RestWSDB/webresources/com.atos.restfull.idrr";
+        var options = retrieveFrom(url);
+        
+    }
     $("#setidrr").html("idrr");
 }
-
 
 function fillTable(id, source) {
     //fonctionn pour remplir un tableau de données
