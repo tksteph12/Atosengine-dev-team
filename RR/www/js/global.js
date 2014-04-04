@@ -31,13 +31,13 @@ function retrieveFrom(url){
 
 
 // -- load html file
-function setViewPanel(id,htmlfile) {
+function setViewPanel(id,htmlfile,obj) {
    // $('#'+id).load(htmlfile);
 
-    $.get(htmlfile+'.html', null, function (htmlfile) {
+    $.get(htmlfile+'.html', obj, function (htmlfile) {
     // Render the data using the remote template
   // passer les données dans le template
-    $.tmpl(htmlfile, null).appendTo('#'+id);
+    $.tmpl(htmlfile, obj).appendTo('#'+id);
   });
 }
 
@@ -108,12 +108,20 @@ function fillTable(id, source) {
 function searchAndFill(id,htmlfile){
   $('#'+id).empty();
 
+  var resTags = {
+    info: "Rappel Des paramètres entrées pour la recherche",
+    name: "nom",
+    role: "role",
+    city: "city",
+    gcm: "gcm"
+  }
+
   // Récupérer le template à distance
   //NB possibilité d'utiliser tu templating mustache
   $.get("results.html", null, function (results) {
     // Render the data using the remote template
   // passer les données dans le template
-    $.tmpl(results, null).appendTo('#'+id);
+    $.tmpl(results, resTags).appendTo('#'+id);
     fillTable('data-area', dataArray);
 });
 
