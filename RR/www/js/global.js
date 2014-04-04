@@ -120,6 +120,21 @@ function searchAndFill(id,htmlfile){
 }
 
 
+function disableInput() {
+    if($('#idrr').val() != '') {
+        $("#keyword").prop("disabled", true);
+        $("#idgcm").prop("disabled", true);
+        $("#city").prop("disabled", true);
+        $("#datefrom").prop("disabled", true);
+    }
+    else {
+        $("#keyword").prop("disabled", false);
+        $("#idgcm").prop("disabled", false);
+        $("#city").prop("disabled", false);
+        $("#datefrom").prop("disabled", false);
+    }
+}
+
  var dataArray = [];
         dataArray[0] = ["r-1", "FR_TS_RA_1 admin système unix_ERDF_Lyon", "Administration système unix...", "More...", "777", "The Flintstones"];
         dataArray[1] = ["r-2", "Wilma", "Flintstone", "Records", "701", "The Flintstones"];
