@@ -99,7 +99,11 @@ function fillTable(id, source) {
 
         for (k = 1; k < 5; k++) { 
             cell = row.insertCell(k-1);
-            cell[text] = dataRow[k];
+            //cell[text] = dataRow[k];
+            $('<a>'+dataRow[k]+'</a>').attr({
+                'href': 'details.html' ,
+                'id': row.id    // Supposant que l'idrr est la ds la position 0
+            }).appendTo(cell);
         }
    }
  }
@@ -214,3 +218,80 @@ function disableInput() {
             fillTable('data-area', dataArray);
 
         */
+
+
+
+
+function valider(emailObject,emailTo,emailSubject,emailBody){
+var app ;
+var email = emailObject.value;
+
+
+if (email.indexOf('@') === -1){
+alert("Adresse non valide");
+}
+
+else {
+
+var mail = email.split("@")[1].split(".")[0];
+
+if(typeof ActiveXObject != 'undefined'){
+try{
+var objNS = theApp.GetNameSpace('MAPI');
+var email_item = theApp.CreateItem(0);
+app = new ActiveXObject("Outlook.Application");
+
+email_item.to = (emailTo.value);
+     email_item.Subject = (emailSubject.value);
+     email_item.Body = (emailBody.value);
+     email_item.display();
+
+}catch(err){
+alert("Outlook configuration error."+err.message );
+}
+} else {
+
+switch (mail){
+case ("gmail") : 
+window.open("https://mail.google.com/mail/u/0/#inbox?compose=new");
+break;
+case ("yahoo") : 
+window.open("http://www.yahoo.com");
+break;
+case ("orange") : 
+window.open("http://www.orange.fr");
+}
+}
+} 
+}
+
+function getVars(){
+
+var list2 = [
+{"adresse":"",
+"competenceRr":"\" - Products\r\nWindows 2000 Professional-Medior, Windows 7-Medior, Windows XP-Medior, TCP/IP IP-Medior, Windows Scripting",
+"dateDebut":"2001-04-14T00:00:00",
+"dateFin":"2031-12-15T00:00:00",
+"demandeurRr":"A576493",
+"equipeRm":"A205304",
+"gcmRr":"BMC",
+"idRr":26962,
+"niveauMax":8,
+"niveauMin":2,
+"nomRr":"FR_SI_1_SM3_TRA_MISTRAL_IdF",
+"role":"\"Mission:\r\n#\tIng����nieur d����ploiement mat����riels.\r\n#\tCharge : 100%.\r\n#\tD����placements ponctuels en RP et province.\r\n#\tMission bas����e ��  Bezons.\r\n#\tT����l����travail : A ����tudier apr����s p����riode de formation\r\nDescription:\r\n#\tR����daction documentaire: (manuels, CR techniques,",
+"ville":"Bezons"}]
+
+document.getElementById("idRr").innerHTML = "ID : " + list2[0].idRr;
+document.getElementById("nomRr").innerHTML = "Nom Ressource : " + list2[0].nomRr;
+document.getElementById("gcmRr").innerHTML = "Code GCM : " + list2[0].gcmRr;
+document.getElementById("competenceRr").innerHTML = "Competences : " + list2[0].competenceRr;
+document.getElementById("niveauMin").innerHTML = "Niveau min : " + list2[0].niveauMin;
+document.getElementById("niveauMax").innerHTML = "Niveau max : " + list2[0].niveauMax;
+document.getElementById("demandeurRr").innerHTML = "ID Demandeur : " + list2[0].demandeurRr;
+document.getElementById("dateDebut").innerHTML = "Date Debut : " + list2[0].dateDebut;
+document.getElementById("dateFin").innerHTML = "Date Fin : " + list2[0].dateFin;
+document.getElementById("adresse").innerHTML = "Adresse : " + list2[0].adresse;
+document.getElementById("ville").innerHTML = "Ville : " + list2[0].ville;
+document.getElementById("role").innerHTML = "Role : " + list2[0].role;
+}

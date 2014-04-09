@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <title>Resource Request</title>
+        <script src="vendors/jquery/js/jquery-2.1.0.min.js"></script>
+        <script src="vendors/jquery/js/jquery.tmpl.min.js"></script>
+        <script src="js/global.js"></script>
+        <script src="js/launcher.js"></script>
+        <script type="text/javascript" src = "js/alioune.js"></script>
+
+
+    </head>
+    <body>
+<header class="header">
+            Resource Request Full
+        </header><br><br><br>
+
+        <br><br><br><div id = "tableau" class = "tab"> 
+            <table cols = 3 >
+               <tr>
+                <td id = "idRr"> </td> 
+                <td id = "nomRr"> </td>
+                <td id = "competenceRr"> </td> </tr>
+               <tr>
+                <td id = "demandeurRr"> </td>
+                <td id = "dateDebut"> </td> 
+                <td id = "dateFin"> </td></tr>
+                <tr>
+                <td id = "gcmRr"> </td>
+                <td id = "niveauMin"> </td>
+                <td id = "niveauMax"> </td>
+                </tr>
+               <tr>
+                <td id = "dateDebut"> </td> 
+                <td id = "adresse"> </td>
+                <td id = "ville"> </td> </tr>
+             </table>
+        </div> <br> <br>
+
+
+        <div id = "text" class = "textarea">
+            <var id = "role">
+            </var>
+        </div>
+
+        <div id = "email" class = "emailfield">
+
+            <div id = "email_field"  >
+                <input id = "idemail" value = "Email">
+                </input> 
+             </div>
+
+
+            <button id = "buttonValider" onclick="valider(idemail, 'fall.aliouneb@gmail.com', 'RR numero XXX', role)">
+                Repondre
+                </button>
+
+        </div>
+
+    </div>
+    </body>
+</html>

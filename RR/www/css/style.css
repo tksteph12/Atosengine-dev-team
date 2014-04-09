@@ -312,3 +312,10 @@ tr.odd .column1 {
     background:#f9fcfe;
     }
     
+footer {
+
+            width: 100%;
+            bottom: 0;
+            position: fixed; 
+            text-align: center;       
+}
