@@ -132,18 +132,20 @@ function searchAndFill(id,htmlfile){
 }
 
 
-function disableInput() {
-    if($('#idrr').val() != '') {
-        $("#keyword").prop("disabled", true);
-        $("#idgcm").prop("disabled", true);
-        $("#city").prop("disabled", true);
-        $("#datefrom").prop("disabled", true);
+var input = ["keyword", "idgcm", "city", "datefrom"];
+
+function disableInput(id) {
+    var actionToDo = true;
+
+    if($("#"+id).val() != '') {
+        actionToDo = true;
     }
     else {
-        $("#keyword").prop("disabled", false);
-        $("#idgcm").prop("disabled", false);
-        $("#city").prop("disabled", false);
-        $("#datefrom").prop("disabled", false);
+        actionToDo = false;
+    }
+
+    for (i = 0; i < input.length; i++) { 
+        $("#"+input[i]).prop("disabled", actionToDo);
     }
 }
 
