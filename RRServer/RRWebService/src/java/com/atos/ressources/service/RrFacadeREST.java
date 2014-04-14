@@ -102,7 +102,7 @@ public class RrFacadeREST extends AbstractFacade<Rr> {
     @GET
     @Path("/testings")
     @Produces(MediaType.APPLICATION_JSON)
-    //@Interceptors(RrInterceptor.class)
+    //@Interceptors(RrInterceptor.class)    
     public List<Rr> findRRByElements(@QueryParam("id") Integer id, @QueryParam("gcm") String codeGcm,@QueryParam("motscles") String motscles,
             @QueryParam("ville") String ville, @QueryParam("from") Date from){
         
@@ -282,8 +282,7 @@ public class RrFacadeREST extends AbstractFacade<Rr> {
                                 }
                               
                                 results = query.getResultList();
-                                
-                                
+                               
                             }
                             else{
                                 // filtre par ville
@@ -292,11 +291,68 @@ public class RrFacadeREST extends AbstractFacade<Rr> {
                         }
                     }
                     else {
-                        if (from!=null){
-                            results = getEntityManager().createNamedQuery("Rr.findByDateDebut",Rr.class).getResultList();
+                        
+                        // code gcm et ville null: 
+                        
+                        if(motscles !=null){
+                            if(from!=null){
+                                List <String> keywords = Utils.parse(motscles);
+                                //All criterias non null
+                                String request = "SELECT DISTINCT r FROM Rr r WHERE r.dateDebut >= :from AND (";
+                                int cpt = 0;
+                                for(String keyword : keywords){
+                                    
+                                    request = request + "r.competenceRr LIKE : "+keyword +" OR r.role LIKE :"+keyword;
+                                    cpt++;
+                                    
+                                    if(cpt < keywords.size()){
+                                        request = request + " OR ";
+                                    }
+                                }
+                              
+                                request = request + ")";
+                                TypedQuery query = getEntityManager().createQuery(request, Rr.class);
+                                query.setParameter("from", from);
+                                for(String keyword : keywords){
+                                    query.setParameter(keyword, "%"+keyword+"%");
+                                }
+                              
+                                results = query.getResultList();                               
+                            }
+                            else{
+                                
+                                List <String> keywords = Utils.parse(motscles);
+                                //All criterias non null
+                                String request = "SELECT DISTINCT r FROM Rr r WHERE (";
+                                int cpt = 0;
+                                for(String keyword : keywords){
+                                    
+                                    request = request + "r.competenceRr LIKE : "+keyword +" OR r.role LIKE : "+keyword;
+                                    cpt++;
+                                    
+                                    if(cpt < keywords.size()){
+                                        request = request + " OR ";
+                                    }
+                                }
+                              
+                                request = request + ")";
+                                TypedQuery query = getEntityManager().createQuery(request, Rr.class);
+                                for(String keyword : keywords){
+                                    query.setParameter(keyword, "%"+keyword+"%");
+                                }
+                              
+                                results = query.getResultList();
+                                
+                            }
+                        }
+                        else{
+                            if (from!=null){
+                                results = getEntityManager().createNamedQuery("Rr.findByDateDebut",Rr.class).getResultList();
+                            }
+                            
                         }
                     }
-                
+                                    
                 }
                 
             }

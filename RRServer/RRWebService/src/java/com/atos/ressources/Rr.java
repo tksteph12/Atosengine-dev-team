@@ -60,12 +60,12 @@ public class Rr implements Serializable {
     private Integer idRr;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
+    @Size(min = 1, max = 117)
     @Column(name = "nom_rr")
     private String nomRr;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
+    @Size(min = 1, max = 3787)
     @Column(name = "role")
     private String role;
     @Basic(optional = false)
@@ -75,7 +75,7 @@ public class Rr implements Serializable {
     private String demandeurRr;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 8)
+    @Size(min = 1, max = 36)
     @Column(name = "equipe_rm")
     private String equipeRm;
     @Basic(optional = false)
@@ -90,11 +90,12 @@ public class Rr implements Serializable {
     private Date dateFin;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 120)
+    @Size(min = 1, max = 1187)
     @Column(name = "competence_rr")
     private String competenceRr;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 4)
     @Column(name = "gcm_rr")
     private String gcmRr;
     @Basic(optional = false)
@@ -104,17 +105,19 @@ public class Rr implements Serializable {
     private String adresse;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 39)
     @Column(name = "ville")
     private String ville;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 2)
     @Column(name = "niveau_min")
-    private int niveauMin;
+    private String niveauMin;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 2)
     @Column(name = "niveau_max")
-    private int niveauMax;
+    private String niveauMax;
 
     public Rr() {
     }
@@ -123,7 +126,7 @@ public class Rr implements Serializable {
         this.idRr = idRr;
     }
 
-    public Rr(Integer idRr, String nomRr, String role, String demandeurRr, String equipeRm, Date dateDebut, Date dateFin, String competenceRr, String gcmRr, String adresse, String ville, int niveauMin, int niveauMax) {
+    public Rr(Integer idRr, String nomRr, String role, String demandeurRr, String equipeRm, Date dateDebut, Date dateFin, String competenceRr, String gcmRr, String adresse, String ville, String niveauMin, String niveauMax) {
         this.idRr = idRr;
         this.nomRr = nomRr;
         this.role = role;
@@ -227,19 +230,19 @@ public class Rr implements Serializable {
         this.ville = ville;
     }
 
-    public int getNiveauMin() {
+    public String getNiveauMin() {
         return niveauMin;
     }
 
-    public void setNiveauMin(int niveauMin) {
+    public void setNiveauMin(String niveauMin) {
         this.niveauMin = niveauMin;
     }
 
-    public int getNiveauMax() {
+    public String getNiveauMax() {
         return niveauMax;
     }
 
-    public void setNiveauMax(int niveauMax) {
+    public void setNiveauMax(String niveauMax) {
         this.niveauMax = niveauMax;
     }
 
