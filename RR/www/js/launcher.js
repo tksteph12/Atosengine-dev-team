@@ -8,3 +8,10 @@ $(document).ready(function() {
 	setViewPanel('body','welcome',params);
 	setViewPanel('viewpanel','form',null);	
  });
+
+
+var globalParamters = {
+	selectBoxUrl : "",
+	
+
+}
