@@ -3,15 +3,16 @@
   <input id="keyword" type="text" placeholder="Mots clés séparer par un ' ; ' ">
   <select id="idgcm" name="gcm" >
     <option value="tous">Tout GCM</option>
-      <option value="lyon">AD</option>
-      <option value="paris">SM</option>
   </select>
   <select id="city" name="city">
       <option value="tous">Toute villes</option>
-      <option value="lyon">Lyon</option>
-      <option value="paris">Paris</option>
   </select>
   <p>Parus depuis le:</p><input id="datefrom" name="datefrom" type="date" placeholder="Depuis le">
   <input  id= 'submit_btn' type="submit" onClick="searchAndFill('viewpanel','results.html')">
 </div>
 
+<script type="text/javascript">
+
+  fillSelectBox();
+
+</script>

@@ -2,7 +2,16 @@
 // -- fill selected box with database
 function fillSelectBox() {
     var selectBox = $('#idgcm');
-    var url = "http://192.168.43.138:8080/RestWSDB/webresources/com.atos.restfull.gcm";
+    var url = "http://10.255.241.71:8080/RRWebService/webresources/com.atos.ressources.gcm";
+    var options = retrieveFrom(url);
+
+    for(var i = 0, l = options.length; i < l; i++){
+        var option = options[i];
+        selectBox[0].options.add( new Option(option.code, option.idGcm, option.selected) );
+    }
+
+    var selectBox = $('#city');
+    var url = "http://10.255.241.71:8080/RRWebService/webresources/com.atos.ressources.rr/city";
     var options = retrieveFrom(url);
 
     for(var i = 0, l = options.length; i < l; i++){
@@ -116,6 +125,7 @@ function fillTable(id, source) {
                 }).appendTo(cell);
             }
 
+
         }
    }
  }
@@ -131,7 +141,7 @@ function searchAndFill(id,htmlfile){
     city: "Ville",
     gcm: "gcm"
   }
-  var url = "http://10.255.242.211:8080/RRWebService/webresources/com.atos.ressources.rr";
+  var url = "http://10.255.241.71:8080/RRWebService/webresources/com.atos.ressources.rr";
   var arrayDatas = retrieveFrom(url);
   console.log(arrayDatas);
   // Récupérer le template à distance
