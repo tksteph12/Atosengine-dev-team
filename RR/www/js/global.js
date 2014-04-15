@@ -2,21 +2,21 @@
 // -- fill selected box with database
 function fillSelectBox() {
     var selectBox = $('#idgcm');
-    var url = "http://10.255.241.71:8080/RRWebService/webresources/com.atos.ressources.gcm";
+    var url = "http://10.255.241.71:8080/RRWebService/webresources/com.atos.ressources.rr/allgcm";
     var options = retrieveFrom(url);
 
     for(var i = 0, l = options.length; i < l; i++){
         var option = options[i];
-        selectBox[0].options.add( new Option(option.code, option.idGcm, option.selected) );
+        selectBox[0].options.add( new Option(option.code, option.code, option.selected) );
     }
 
     var selectBox = $('#city');
-    var url = "http://10.255.241.71:8080/RRWebService/webresources/com.atos.ressources.rr/city";
+    var url = "http://10.255.241.71:8080/RRWebService/webresources/com.atos.ressources.rr/cities";
     var options = retrieveFrom(url);
 
     for(var i = 0, l = options.length; i < l; i++){
         var option = options[i];
-        selectBox[0].options.add( new Option(option.code, option.idGcm, option.selected) );
+        selectBox[0].options.add( new Option(option.ville, option.ville, option.selected) );
     }
 }
 
@@ -48,26 +48,6 @@ function setViewPanel(id,htmlfile,obj) {
   // passer les données dans le template
     $.tmpl(htmlfile, obj).appendTo('#'+id);
   });
-}
-
-
-// -- filter parameters
-var idrr;
-var keyword;
-var idgcm;
-var city;
-var client;
-var datefrom;
-
-
-// -- get parameters of the form
-function getDataForm() {
-    idrr = $('#idrr').val();
-    keyword = $('#idrr').val();
-    idgcm = $('#idgcm').val();
-    city = $('#city').val();
-    idrr = $('#idrr').val();
-    datefrom = $('#datefrom').val();
 }
 
 
@@ -131,7 +111,13 @@ function fillTable(id, source) {
  }
 
 
-function searchAndFill(id,htmlfile){
+function searchAndFill(id,htmlfile,filters){
+  var form_idRR = $('#'+filters[0]).val();
+  var form_keyword = $('#'+filters[1]).val();
+  var form_idgcm = $('#'+filters[2]).val();
+  var form_city = $('#'+filters[3]).val();
+  var form_datefrom = $('#'+filters[4]).val();
+
   $('#'+id).empty();
 
   var resTags = {
@@ -140,8 +126,10 @@ function searchAndFill(id,htmlfile){
     role: "role",
     city: "Ville",
     gcm: "gcm"
-  }
-  var url = "http://10.255.241.71:8080/RRWebService/webresources/com.atos.ressources.rr";
+  }   
+  
+
+  var url = "http://10.255.241.71:8080/RRWebService/webresources/com.atos.ressources.rr/listrr?id="+form_idRR+"&gcm="+form_idgcm+"&motscles="+form_keyword+"&ville="+form_city+"&from="+form_datefrom;
   var arrayDatas = retrieveFrom(url);
   console.log(arrayDatas);
   // Récupérer le template à distance

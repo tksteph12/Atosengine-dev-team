@@ -8,11 +8,14 @@
       <option value="tous">Toute villes</option>
   </select>
   <p>Parus depuis le:</p><input id="datefrom" name="datefrom" type="date" placeholder="Depuis le">
-  <input  id= 'submit_btn' type="submit" onClick="searchAndFill('viewpanel','results.html')">
+  <input  id= 'submit_btn' type="submit" >
 </div>
 
 <script type="text/javascript">
 
   fillSelectBox();
-
+$('#submit_btn').click(function() {
+  var listFilters = ['idrr','keyword','idgcm','city','datefrom'];
+  searchAndFill('viewpanel','results.html',listFilters);
+});
 </script>
