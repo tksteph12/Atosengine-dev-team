@@ -146,6 +146,11 @@ function searchAndFill(id,htmlfile,filters){
 }
 
 
+
+
+/**
+  La fonction est censé désactiver les champs de
+*/
 var input = ["keyword", "idgcm", "city", "datefrom"];
 
 function disableInput(id) {
@@ -163,6 +168,19 @@ function disableInput(id) {
     }
 }
 
+
+/**
+  Cette fonction permet de rechercher dans une liste d'objets json l'élément dont l'id est passé en paramètre
+   id : id à rechercher
+   list: liste d'objets json dans laquelle il faut faire la recherche
+*/
+function findInArray(id,list){
+  for(var i=0; i<tab.length;i++){
+    var obj = list[i];
+    if(obj.idRr===id)
+      return obj;
+  }
+}
  
 
 
