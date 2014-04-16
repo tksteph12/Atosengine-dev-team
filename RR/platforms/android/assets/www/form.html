@@ -1,0 +1,21 @@
+<div method="get" name="searchform" >
+  <input id="idrr" name="idrr" type="text" placeholder="ID RR" onKeyUp="disableInput('idrr')">
+  <input id="keyword" type="text" placeholder="Mots clés séparer par un ' ; ' ">
+  <select id="idgcm" name="gcm" >
+    <option value="tous">Tout GCM</option>
+  </select>
+  <select id="city" name="city">
+      <option value="tous">Toute villes</option>
+  </select>
+  <p>Parus depuis le:</p><input id="datefrom" name="datefrom" type="date" placeholder="Depuis le">
+  <input  id= 'submit_btn' type="submit" >
+</div>
+
+<script type="text/javascript">
+
+  fillSelectBox();
+$('#submit_btn').click(function() {
+  var listFilters = ['idrr','keyword','idgcm','city','datefrom'];
+  searchAndFill('viewpanel','results.html',listFilters);
+});
+</script>

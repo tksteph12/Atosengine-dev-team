@@ -32,8 +32,8 @@ body {
         linear,
         left top,
         left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
+        color-stop(0, #68a2c7),
+        color-stop(0.51, #66a3c7)
     );
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
@@ -123,7 +123,7 @@ h1 {
     color: #FFF;
     text-transform: uppercase;
     text-align: center;
-    background-color: #11a7ab;
+    background-color: #0066a1;
 }
 
 .view{
@@ -165,6 +165,15 @@ h1 {
 
 .left{
     left: -200%;
+}
+
+.emailfield {
+
+    top:0; bottom: 0; left: 0; right: 0;
+    overflow-x: hidden;
+    overflow-y:scroll;
+    text-align:center; /* center horizontally */
+    vertical-align:middle; /* center vertically */
 }
 
 select {
@@ -249,12 +258,12 @@ img {
     margin-top:.5em;
     }   
 table {
-    width:90%;
+    width:70%;
     border-top:1px solid #e5eff8;
     border-right:1px solid #e5eff8;
     margin:1em auto;
-        border-collapse:collapse;
-    }
+    border-collapse:collapse;
+}
 caption {
     color: #9ba9b4;
     font-size:.94em;
@@ -266,19 +275,21 @@ caption {
     }   
 
 td {
-    color:#678197;
+    color:#ffffff;
     border-bottom:1px solid #e5eff8;
     border-left:1px solid #e5eff8;
     padding:.3em 1em;
-    text-align:center;
+    text-align:left;
     }               
 th 
 {    font-weight:normal;
-    color: #678197;
-    text-align:left;
+    color: #ffffff;
+    text-align:center;
     border-bottom: 1px solid #e5eff8;
     border-left:1px solid #e5eff8;
     padding:.3em 1em;
+    font-size:13px;
+    font-weight:bold;
     }                           
 thead th {
     background:#f4f9fe;
