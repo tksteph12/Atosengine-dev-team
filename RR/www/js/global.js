@@ -1,9 +1,9 @@
-var ip = "192.168.43.111";//10.255.241.71
+var ip = "10.255.241.71";//"192.168.43.111"
 
 // -- fill selected box with database
 function fillSelectBox() {
     var selectBox = $('#idgcm');
-    var url = "http://192.168.43.111:8080/RRWebService/webresources/com.atos.ressources.rr/allgcm";
+    var url = "http://"+ip+":8080/RRWebService/webresources/com.atos.ressources.rr/allgcm";
     var options = retrieveFrom(url);
 
     for(var i = 0, l = options.length; i < l; i++){
@@ -12,7 +12,7 @@ function fillSelectBox() {
     }
 
     var selectBox = $('#city');
-    var url = "http://192.168.43.111:8080/RRWebService/webresources/com.atos.ressources.rr/cities";
+    var url = "http://"+ip+":8080/RRWebService/webresources/com.atos.ressources.rr/cities";
     var options = retrieveFrom(url);
 
     for(var i = 0, l = options.length; i < l; i++){
@@ -57,7 +57,7 @@ function getSearchResult() {
 
     if ( idrr != '' ) {
         alert("idrr search");
-        var url = "http://192.168.43.138:8080/RestWSDB/webresources/com.atos.restfull.idrr";
+        var url = "http://"+ip+":8080/RestWSDB/webresources/com.atos.restfull.idrr";
         var options = retrieveFrom(url);
         
     }
@@ -130,7 +130,7 @@ function searchAndFill(id,htmlfile,filters){
   }   
   
 
-  var url = "http://192.168.43.111:8080/RRWebService/webresources/com.atos.ressources.rr/listrr?id="+form_idRR+"&gcm="+form_idgcm+"&motscles="+form_keyword+"&ville="+form_city+"&from="+form_datefrom;
+  var url = "http://"+ip+":8080/RRWebService/webresources/com.atos.ressources.rr/listrr?id="+form_idRR+"&gcm="+form_idgcm+"&motscles="+form_keyword+"&ville="+form_city+"&from="+form_datefrom;
   var arrayDatas = retrieveFrom(url);
   console.log(arrayDatas);
   // Récupérer le template à distance
