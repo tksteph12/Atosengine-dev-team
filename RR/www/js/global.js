@@ -1,4 +1,4 @@
-var ip = "10.255.241.71";//"192.168.43.111"
+var ip =  "10.255.241.71";//"192.168.43.111";//
 
 // -- fill selected box with database
 function fillSelectBox() {
@@ -100,17 +100,22 @@ function fillTable(id, source) {
             if ((key==='nomRr' || key==='role' || key==='gcmRr'||key==='ville')){
                 k++
                 cell = row.insertCell(k-1);
-                $('<a>'+dataRow[key]+'</a>').attr({
+                var dataRowCut = dataRow[key];
+                if(key === 'role') {
+                  dataRowCut = cutStr(dataRow[key],50,dataRowCut.length);
+                }
+                $('<a>'+dataRowCut+'</a>').attr({
                     'href': 'details.html' ,
                     'id': row.id    // Supposant que l'idrr est la ds la position 0
                 }).appendTo(cell);
             }
-
-
         }
    }
  }
 
+function cutStr(str, cutStart, cutEnd){
+  return str.substr(0,cutStart) + str.substr(cutEnd+1);
+}
 
 function searchAndFill(id,htmlfile,filters){
   var form_idRR = $('#'+filters[0]).val();
