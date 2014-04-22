@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "gcm")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Gcm.findAll", query = "SELECT g FROM Gcm g"),
+    @NamedQuery(name = "Gcm.findAll", query = "SELECT g FROM Gcm g ORDER BY g.code"),
     @NamedQuery(name = "Gcm.findByIdGcm", query = "SELECT g FROM Gcm g WHERE g.idGcm = :idGcm"),
     @NamedQuery(name = "Gcm.findByCode", query = "SELECT g FROM Gcm g WHERE g.code = :code"),
     @NamedQuery(name = "Gcm.findByLibelleGcm", query = "SELECT g FROM Gcm g WHERE g.libelleGcm = :libelleGcm"),
@@ -139,5 +139,6 @@ public class Gcm implements Serializable {
     public String toString() {
         return "com.ressources.Gcm[ idGcm=" + idGcm + " ]";
     }
+    
     
 }

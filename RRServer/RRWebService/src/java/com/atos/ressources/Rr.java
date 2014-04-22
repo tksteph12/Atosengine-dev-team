@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "rr")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Rr.findAll", query = "SELECT r FROM Rr r"),
+    @NamedQuery(name = "Rr.findAll", query = "SELECT r FROM Rr r ORDER BY r.dateDebut"),
     @NamedQuery(name = "Rr.findByIdRr", query = "SELECT r FROM Rr r WHERE r.idRr = :idRr"),
     @NamedQuery(name = "Rr.findByNomRr", query = "SELECT r FROM Rr r WHERE r.nomRr = :nomRr"),
     @NamedQuery(name = "Rr.findByRole", query = "SELECT r FROM Rr r WHERE r.role = :role"),
     @NamedQuery(name = "Rr.findByDemandeurRr", query = "SELECT r FROM Rr r WHERE r.demandeurRr = :demandeurRr"),
     @NamedQuery(name = "Rr.findByEquipeRm", query = "SELECT r FROM Rr r WHERE r.equipeRm = :equipeRm"),
-    @NamedQuery(name = "Rr.findByDateDebut", query = "SELECT r FROM Rr r WHERE r.dateDebut = :dateDebut"),
+    @NamedQuery(name = "Rr.findByDateDebut", query = "SELECT r FROM Rr r WHERE r.dateDebut >= :dateDebut"),
     @NamedQuery(name = "Rr.findByDateFin", query = "SELECT r FROM Rr r WHERE r.dateFin = :dateFin"),
     @NamedQuery(name = "Rr.findByCompetenceRr", query = "SELECT r FROM Rr r WHERE r.competenceRr = :competenceRr"),
     @NamedQuery(name = "Rr.findByGcmRr", query = "SELECT r FROM Rr r WHERE r.gcmRr = :gcmRr"),
@@ -43,11 +43,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Rr.findByVille", query = "SELECT r FROM Rr r WHERE r.ville = :ville"),
     @NamedQuery(name = "Rr.findByNiveauMin", query = "SELECT r FROM Rr r WHERE r.niveauMin = :niveauMin"),
     @NamedQuery(name = "Rr.findByNiveauMax", query = "SELECT r FROM Rr r WHERE r.niveauMax = :niveauMax"),
-    @NamedQuery(name = "Rr.findAllCities", query = "SELECT DISTINCT r.ville FROM Rr r"),
+    @NamedQuery(name = "Rr.findAllCities", query = "SELECT DISTINCT r.ville FROM Rr r ORDER BY r.ville"),
+    @NamedQuery(name = "Rr.findAllGcm", query = "SELECT DISTINCT r.gcmRr FROM Rr r ORDER BY r.gcmRr"),
     @NamedQuery(name="Rr.findwithoutkeywords",query="SELECT r FROM Rr r WHERE r.gcmRr = :gcmRr AND r.ville = :ville AND r.dateDebut >= :from "),
     @NamedQuery(name="Rr.findwithoutkeywords",query="SELECT r FROM Rr r WHERE r.gcmRr = :gcmRr AND r.ville = :ville AND r.dateDebut >= :from "),
     @NamedQuery(name="Rr.findwithfromandgcm",query="SELECT r FROM Rr r WHERE r.gcmRr = :gcmRr AND r.dateDebut >= :from "),
-    @NamedQuery(name="Rr.findwithfromandville",query="SELECT r FROM Rr r WHERE r.ville = :ville AND r.dateDebut >= :from ")
+    @NamedQuery(name="Rr.findwithfromandville",query="SELECT r FROM Rr r WHERE r.ville = :ville AND r.dateDebut >= :from "),
+    @NamedQuery(name="Rr.findwithgcmandville",query="SELECT r FROM Rr r WHERE r.ville = :ville AND r.gcmRr = :gcmRr ")
                 
 })
 
