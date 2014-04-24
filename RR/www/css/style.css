@@ -268,12 +268,14 @@ table {
 caption {
     color: #9ba9b4;
     font-size:.94em;
-        letter-spacing:.1em;
-        margin:1em 0 0 0;
-        padding:0;
-        caption-side:top;
-        text-align:center;
-    }   
+    letter-spacing:.1em;
+    margin:1em 0 0 0;
+    padding:0;
+    caption-side:top;
+    text-align:center;
+    background:#f4f9fe;
+    font:bold 1.2em/2em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+}   
 
 td {
     color:#ffffff;
@@ -333,4 +335,8 @@ footer {
             bottom: 0;
             position: fixed; 
             text-align: center;       
+}
+
+.particular{
+    text-align: center !important;
 }

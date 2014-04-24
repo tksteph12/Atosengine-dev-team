@@ -1,4 +1,4 @@
-var ip =  "10.255.241.71";//"192.168.43.111";//
+var ip =  "192.168.1.226";//"192.168.43.111";//
 
 // -- fill selected box with database
 function fillSelectBox() {
@@ -40,7 +40,13 @@ function retrieveFrom(url){
 }
 
 
-// -- load html file
+/*
+// -- loads html template file htmlfile in position represented by id 
+  @id is the id of the space reserved for the template.
+  @htmlfile is the template file to insert
+  @obj is the parameters for templating 
+
+*/
 function setViewPanel(id,htmlfile,obj) {
    // $('#'+id).load(htmlfile);
 
@@ -97,6 +103,7 @@ function fillTable(id, source) {
         }*/
         var k = 0;
         for(key in dataRow){
+          
             if ((key==='nomRr' || key==='role' || key==='gcmRr'||key==='ville')){
                 k++
                 cell = row.insertCell(k-1);
@@ -104,13 +111,22 @@ function fillTable(id, source) {
                 if(key === 'role') {
                   dataRowCut = cutStr(dataRow[key],50,dataRowCut.length);
                 }
-                $('<a>'+dataRowCut+'</a>').attr({
-                    'href': 'details.html' ,
+                cell[text] = dataRowCut;
+               /* $('<a>'+dataRowCut+'</a>').attr({
+                    'href': 'detailssssss.html',
                     'id': row.id    // Supposant que l'idrr est la ds la position 0
-                }).appendTo(cell);
+                }).appendTo(cell);*/
             }
         }
    }
+//Evenement pour récupérer l'id sur la ligne sur laquelle on clicke
+   $("tr").click(function(){
+      var object = findInArray(this.id,source);
+      $('#viewpanel').empty();
+      //Rajouter des métadonnées sur le paramètre object ici avant de le passer au template.
+      // Les méta données sont tous les paramètres qui sont en dur dans le template
+      setViewPanel('viewpanel','details',object);
+    });
  }
 
 function cutStr(str, cutStart, cutEnd){
@@ -123,6 +139,7 @@ function searchAndFill(id,htmlfile,filters){
   var form_idgcm = $('#'+filters[2]).val();
   var form_city = $('#'+filters[3]).val();
   var form_datefrom = $('#'+filters[4]).val();
+  form_datefrom = convertDate(form_datefrom);
 
   $('#'+id).empty();
 
@@ -137,7 +154,7 @@ function searchAndFill(id,htmlfile,filters){
 
   var url = "http://"+ip+":8080/RRWebService/webresources/com.atos.ressources.rr/listrr?id="+form_idRR+"&gcm="+form_idgcm+"&motscles="+form_keyword+"&ville="+form_city+"&from="+form_datefrom;
   var arrayDatas = retrieveFrom(url);
-  console.log(arrayDatas);
+  allResults = arrayDatas;
   // Récupérer le template à distance
   //NB possibilité d'utiliser tu templating mustache
   $.get("results.html", null, function (results) {
@@ -180,13 +197,25 @@ function disableInput(id) {
    list: liste d'objets json dans laquelle il faut faire la recherche
 */
 function findInArray(id,list){
-  for(var i=0; i<tab.length;i++){
+  for(var i=0; i<list.length;i++){
     var obj = list[i];
-    if(obj.idRr===id)
+    var idr=obj.idRr;
+    if(idr.toString()===id)
       return obj;
   }
 }
  
+function convertDate(inputFormat) {
+  var testtt = inputFormat.trim();
+  if(testtt.length <1){
+    inputFormat = "1970-01-01";
+  }
+  var date = inputFormat.replace(/-/g,'/');
+  function pad(s) { return (s < 10) ? '0' + s : s; }
+  var d = new Date(date);
+  return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
+}
+
 
 
 
@@ -263,3 +292,9 @@ document.getElementById("adresse").innerHTML = "Adresse : " + list2[0].adresse;
 document.getElementById("ville").innerHTML = "Ville : " + list2[0].ville;
 document.getElementById("role").innerHTML = "Role : " + list2[0].role;
 }
+
+
+var allResults = [];
+
+
+
