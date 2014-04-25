@@ -1,4 +1,4 @@
-var ip =  "192.168.1.226";//"192.168.43.111";//
+var ip =  "10.255.241.71";//"192.168.43.111";// 
 
 // -- fill selected box with database
 function fillSelectBox() {
@@ -119,6 +119,7 @@ function fillTable(id, source) {
             }
         }
    }
+
 //Evenement pour récupérer l'id sur la ligne sur laquelle on clicke
    $("tr").click(function(){
       var object = findInArray(this.id,source);
@@ -127,6 +128,7 @@ function fillTable(id, source) {
       // Les méta données sont tous les paramètres qui sont en dur dans le template
       setViewPanel('viewpanel','details',object);
     });
+   $("tr").addClass("trhover");
  }
 
 function cutStr(str, cutStart, cutEnd){
