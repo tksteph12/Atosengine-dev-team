@@ -314,11 +314,18 @@ tfoot th em {
     font-weight: bold;
     font-size: 1.1em;
     font-style: normal;
-    }   
+}   
 
 tr.odd td   {
     background:#f7fbff;
     }
+
+.trhover:hover {
+    cursor: pointer !important;
+    background: #0066a1;
+}
+
+
 tr.odd .column1 {
     background:#f4f9fe;
     }   

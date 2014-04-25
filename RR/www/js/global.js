@@ -148,6 +148,7 @@ function fillTable(id, source) {
             }
         }
    }
+
 //Evenement pour récupérer l'id sur la ligne sur laquelle on clicke
    $("tr").click(function(){
       var object = findInArray(this.id,source);
@@ -156,6 +157,7 @@ function fillTable(id, source) {
       // Les méta données sont tous les paramètres qui sont en dur dans le template
       setViewPanel('viewpanel','details',object);
     });
+   $("tr").addClass("trhover");
  }
 
 function cutStr(str, cutStart, cutEnd){
