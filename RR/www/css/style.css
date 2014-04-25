@@ -340,3 +340,7 @@ footer {
 .particular{
     text-align: center !important;
 }
+
+.li{
+    text-align: left;
+}

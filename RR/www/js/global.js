@@ -1,10 +1,16 @@
-var ip =  "192.168.1.226";//"192.168.43.111";//
+var ip =  "10.255.242.211";//"192.168.43.111";//
 
 // -- fill selected box with database
 function fillSelectBox() {
     var selectBox = $('#idgcm');
     var url = "http://"+ip+":8080/RRWebService/webresources/com.atos.ressources.rr/allgcm";
+    try{
     var options = retrieveFrom(url);
+    }
+    catch(e){
+      alert(e);
+
+    }
 
     for(var i = 0, l = options.length; i < l; i++){
         var option = options[i];
@@ -13,8 +19,13 @@ function fillSelectBox() {
 
     var selectBox = $('#city');
     var url = "http://"+ip+":8080/RRWebService/webresources/com.atos.ressources.rr/cities";
-    var options = retrieveFrom(url);
+    try{
 
+    var options = retrieveFrom(url);
+    }
+    catch(e){
+      alert(e);
+    }
     for(var i = 0, l = options.length; i < l; i++){
         var option = options[i];
         selectBox[0].options.add( new Option(option.ville, option.ville, option.selected) );
@@ -32,13 +43,31 @@ function retrieveFrom(url){
         success: function(data) {
           results = data;
       },
-      error : function(){
+      error : function(xhr, ajaxOptions, thrownError){
         console.log("Failed!!");
+        // An error Occured while processing the request : The server returned nothing
+        var params = {
+          xhr: xhr, 
+          ajaxOptions : ajaxOptions, 
+          thrownError : thrownError
+        }
+        //loadErrorView(params);
+        throw thrownError;
     },
     });
     return results;
 }
 
+
+/*
+  function to load error view when an error occurs in the navigation
+
+*/
+
+function loadErrorView(params){
+  alert(params.thrownError);
+
+}
 
 /*
 // -- loads html template file htmlfile in position represented by id 
@@ -148,7 +177,13 @@ function searchAndFill(id,htmlfile,filters){
     name: "nom",
     role: "role",
     city: "Ville",
-    gcm: "gcm"
+    gcm: "gcm",
+    form_idRR: form_idRR,
+    form_keyword : form_keyword,
+    form_idgcm : form_idgcm,
+    form_city : form_city,
+    form_datefrom : form_datefrom
+
   }   
   
 
@@ -244,7 +279,7 @@ email_item.to = (emailTo.value);
      email_item.display();
 
 }catch(err){
-alert("Outlook configuration error."+err.message );
+  alert("Outlook configuration error."+err.message );
 }
 } else {
 
