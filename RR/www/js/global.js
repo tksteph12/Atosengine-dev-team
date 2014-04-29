@@ -1,4 +1,4 @@
-var ip =  "10.255.242.211";//"192.168.43.111";//
+var ip =  "192.168.43.111";//"10.255.241.71";//
 
 // -- fill selected box with database
 function fillSelectBox() {
@@ -9,7 +9,6 @@ function fillSelectBox() {
     }
     catch(e){
       alert(e);
-
     }
 
     for(var i = 0, l = options.length; i < l; i++){
