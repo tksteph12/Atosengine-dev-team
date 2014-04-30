@@ -5,9 +5,9 @@
 		</thead>
 	<tfoot>
 		<!-- rajouter ic le code de l'envoi du mail-->
-		<tr><td colspan="3" class="particular"><button id = "buttonValider" onclick="valider(idemail, 'fall.aliouneb@gmail.com', 'RR numero XXX', role)" >
+		<tr><td colspan="3" class="particular"><button id = "envoiMailBtn" >
                 Repondre
-            </button></td><td><input id="" name="emailForm" type="text" placeholder="Renseignez votre mail ici" style="width:100%"></td></tr>
+            </button></td><td><input id="emailForm" name="emailForm" type="text" placeholder="Renseignez votre mail ici" style="width:100%"></td></tr>
 	</tfoot>
 	<tbody>
 		<tr>
@@ -36,3 +36,24 @@
 	</tbody>
 </table>
 
+<script type="text/javascript">
+
+	$(document).ready(function() { 
+	  /*var content = $('#viewpanel').html();
+	  console.log(content);
+      
+      localStorage.setItem(${idRr},content);**/
+	$('#envoiMailBtn').click(function() {
+		console.log(this);
+		var params = {
+			sen der : emailForm.value,
+			rRId : '${idRr}',
+		};
+
+		respondToRR(params);
+
+	});
+	});
+	
+	
+</script>

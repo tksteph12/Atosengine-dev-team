@@ -14,7 +14,17 @@
 <script type="text/javascript">
 
   fillSelectBox();
-$('#submit_btn').click(function() {
+  var title = "HOME";
+    var stateObject = {id:'home'};
+    var newUrl = "#home"; 
+    history.pushState(stateObject,title,newUrl);
+
+    var content = $('#viewpanel').html();
+    console.log(content);
+    localStorage.setItem('home',content);
+    $('#submit_btn').click(function() {
+
+
   var listFilters = ['idrr','keyword','idgcm','city','datefrom'];
   searchAndFill('viewpanel','results.html',listFilters);
 });

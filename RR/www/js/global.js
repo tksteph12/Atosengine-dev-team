@@ -1,5 +1,5 @@
-var ip =  "10.255.242.211";//"192.168.43.111";//
-
+var ip =  "127.0.0.1";//192.168.1.226";//"10.255.242.211";//"192.168.43.111";//192.168.1.256
+var globalList = [];
 // -- fill selected box with database
 function fillSelectBox() {
     var selectBox = $('#idgcm');
@@ -83,6 +83,7 @@ function setViewPanel(id,htmlfile,obj) {
     // Render the data using the remote template
   // passer les données dans le template
     $.tmpl(htmlfile, obj).appendTo('#'+id);
+    
   });
 }
 
@@ -150,13 +151,19 @@ function fillTable(id, source) {
    }
 
 //Evenement pour récupérer l'id sur la ligne sur laquelle on clicke
+
    $("tr").click(function(){
+      var title = "RR No"+this.id;
+      var stateObject = {id:this.id};
+      var newUrl = "#"+this.id;
       var object = findInArray(this.id,source);
       $('#viewpanel').empty();
       //Rajouter des métadonnées sur le paramètre object ici avant de le passer au template.
       // Les méta données sont tous les paramètres qui sont en dur dans le template
       setViewPanel('viewpanel','details',object);
+      history.pushState(stateObject,title,newUrl);
     });
+
    $("tr").addClass("trhover");
  }
 
@@ -199,11 +206,24 @@ function searchAndFill(id,htmlfile,filters){
     // Render the data using the remote template
   // passer les données dans le template
     $.tmpl(results, resTags).appendTo('#'+id);
+    /*var title = "Results=?";
+    var stateObject = {id:00};
+    var newUrl = "#011";
+    history.pushState(stateObject,title,newUrl);*/
+
     fillTable('data-area', dataArray);
+    var content = $('#viewpanel').html();
+    localStorage.setItem('results',content);
+
+    var title = "Results= ?";
+    var stateObject = {id:'results'};
+    var newUrl = "#Results"; 
+    history.pushState(stateObject,title,newUrl);
+
+    globalList  = dataArray;
 });
 
 }
-
 
 
 
@@ -231,7 +251,7 @@ function disableInput(id) {
 /**
   Cette fonction permet de rechercher dans une liste d'objets json l'élément dont l'id est passé en paramètre
    id : id à rechercher
-   list: liste d'objets json dans laquelle il faut faire la recherche
+   list: liste d'objets json dans laquelle il faut faire la recherchefda
 */
 function findInArray(id,list){
   for(var i=0; i<list.length;i++){
@@ -243,8 +263,8 @@ function findInArray(id,list){
 }
  
 function convertDate(inputFormat) {
-  var testtt = inputFormat.trim();
-  if(testtt.length <1){
+  var temp = inputFormat.trim();
+  if(temp.length <1){
     inputFormat = "1970-01-01";
   }
   var date = inputFormat.replace(/-/g,'/');
@@ -253,6 +273,60 @@ function convertDate(inputFormat) {
   return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
 }
 
+
+function respondToRR(params){
+
+  console.log(globalList);
+// Faire la recherche de la RR correspondante grace à son id l'id.
+  
+  /*  var params = {
+      sender : ,
+      rRId : ,
+    Stocker la liste des rr récupérées dans une liste globale
+  */
+    var app ;
+    var email = params.sender;
+
+    var Rr = findInArray(params.rRId, globalList);
+
+    if (email.indexOf('@') === -1){
+      alert("Adresse non valide");
+    }
+
+    else {
+
+    var mail = email.split("@")[1].split(".")[0];
+
+    if(typeof ActiveXObject != 'undefined'){
+    try{
+    var objNS = theApp.GetNameSpace('MAPI');
+    var email_item = theApp.CreateItem(0);
+    app = new ActiveXObject("Outlook.Application");
+
+        email_item.to = (emailTo.value);
+         email_item.Subject = (Rr.role);
+         email_item.Body = (Rr.competenceRr);
+         email_item.display();
+
+    }catch(err){
+      alert("Outlook configuration error."+err.message );
+    }
+    } else {
+
+    switch (mail){
+    case ("gmail") : 
+    window.open("https://mail.google.com/mail/u/0/#inbox?compose=new");
+    break;
+    case ("yahoo") : 
+    window.open("http://www.yahoo.com");
+    break;
+    case ("orange") : 
+    window.open("http://www.orange.fr");
+    }
+    }
+    } 
+
+}
 
 
 
@@ -334,4 +408,14 @@ document.getElementById("role").innerHTML = "Role : " + list2[0].role;
 var allResults = [];
 
 
+window.addEventListener('popstate', function(event){
+  readState(event.state);
+});
 
+function readState(data){
+  //$('#viewpanel').html(localStorage.getItem('contenu'));
+  if(localStorage.getItem(data.id)){
+    
+    $('#viewpanel').html(localStorage.getItem(data.id));
+  }
+}

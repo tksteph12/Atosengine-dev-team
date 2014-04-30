@@ -6,7 +6,8 @@ $(document).ready(function() {
 	};
 
 	setViewPanel('body','welcome',params);
-	setViewPanel('viewpanel','form',null);	
+	setViewPanel('viewpanel','form',null);
+	
  });
 
 
