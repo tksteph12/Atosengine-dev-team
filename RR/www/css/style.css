@@ -163,10 +163,6 @@ h1 {
     -webkit-overflow-scrolling:touch;
 }
 
-.left{
-    left: -200%;
-}
-
 .emailfield {
 
     top:0; bottom: 0; left: 0; right: 0;
@@ -251,6 +247,7 @@ table a,
 table a:link,
 table a:visited {
     border:none;
+
     }                           
     
 img {
@@ -258,13 +255,14 @@ img {
     margin-top:.5em;
     }   
 table {
-    width:70%;
+    width:90% !important;
     border-top:1px solid #e5eff8;
     border-right:1px solid #e5eff8;
     margin:1em auto;
     border-collapse:collapse;
-
+    table-layout: fixed;
 }
+
 caption {
     color: #9ba9b4;
     font-size:.94em;
@@ -278,11 +276,12 @@ caption {
 }   
 
 td {
-    color:#ffffff;
+    color:#ffffff;  
     border-bottom:1px solid #e5eff8;
     border-left:1px solid #e5eff8;
     padding:.3em 1em;
     text-align:left;
+    overflow:hidden;
     }               
 th 
 {    font-weight:normal;
@@ -299,6 +298,7 @@ thead th {
     text-align:center;
     font:bold 1.2em/2em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
     color:#66a3d3
+    overflow:hidden
     }   
 tfoot th {
     text-align:center;
@@ -318,7 +318,7 @@ tfoot th em {
 
 tr.odd td   {
     background:#f7fbff;
-    }
+}
 
 .trhover:hover {
     cursor: pointer !important;
@@ -337,7 +337,6 @@ tr.odd .column1 {
     color: #ffffff;
 }
 footer {
-
             width: 100%;
             bottom: 0;
             position: fixed; 

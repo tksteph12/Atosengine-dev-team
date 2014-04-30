@@ -1,71 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <title>Resource Request</title>
-        <script src="vendors/jquery/js/jquery-2.1.0.min.js"></script>
-        <script src="vendors/jquery/js/jquery.tmpl.min.js"></script>
-        <script src="js/global.js"></script>
-        <script src="js/launcher.js"></script>
-        <script type="text/javascript" src = "js/alioune.js"></script>
-
-
-    </head>
-    <body>
-    <header class="header">
-            Resource Request Full
-    </header>
-    <br><br><br>
-    <br><br><br>
-        <div id = "tableau" class = "tab"> 
-            <table >
-                <thead>
-                    <tr>
-                        <th id = "nomRr" colspan="4"> </th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td id = "idRr" colspan="2"> </td>
-                    <td id = "demandeurRr" colspan="2"> </td>
-               </tr>
-               <tr>
-                    <td id = "gcmRr"> </td>
-                    <td id = "niveauMinMax"> </td>
-                    <td id = "dateDebut"> </td> 
-                    <td id = "dateFin"> </td></tr>
-                <tr>
-                    <td id = "ville"> </td> 
-                    <td id = "adresse" colspan="3"> </td>
-                </tr>
-                <tr>
-                    <td id = "role" colspan="4"> </td>
-                </tr>
-                <tr>
-                    <td id = "competenceRr" colspan="4"> </td> </tr>
-                </tr>
-            </table>
-        </div> <br> <br>
-
-
-        <div id = "text" class = "textarea">
-            <var id = "role">
-            </var>
-        </div>
-
-        <div id = "email" class = "emailfield">
-            <div id = "email_field"  >
-                <input id = "idemail" placeholder="Entrez votre email">
-                </input>
-             </div>
-            <button id = "buttonValider" onclick="valider(idemail, 'fall.aliouneb@gmail.com', 'RR numero XXX', role)">
+	 <input name="submit" type="submit" value="Accueil" onclick="javascript:location.reload()" /> 
+<table>
+	<caption>${nomRr}</caption>
+		<thead>
+		</thead>
+	<tfoot>
+		<!-- rajouter ic le code de l'envoi du mail-->
+		<tr><td colspan="3" class="particular"><button id = "buttonValider" onclick="valider(idemail, 'fall.aliouneb@gmail.com', 'RR numero XXX', role)" >
                 Repondre
-            </button>
-        </div>
+            </button></td><td><input id="" name="emailForm" type="text" placeholder="Renseignez votre mail ici" style="width:100%"></td></tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td colspan="2">RR No:${idRr}</td>
+			<td colspan="2">ID Demandeur: ${demandeurRr}</td>
+		</tr>
 
-    </div>
-    </body>
-</html>
+		<tr>
+			<td>CODE GCM: ${gcmRr}</td>
+			<td>NIVEAU : ${idRr}</td>
+			<td>DATE DEBUT : ${dateDebut}</td>
+			<td>DATE FIN : ${dateFin}</td>
+		</tr>
+		<tr>
+			<td>VILLE : ${ville}</td>
+			<td colspan="3">ADRESSE : ${adresse}</td>
+		</tr>
+		<tr>
+			
+			<td colspan="4">COMPETENCES : ${competenceRr}</td>
+		</tr>
+		<tr>
+			
+			<td colspan="4">ROLE : ${role}</td>
+		</tr>
+	</tbody>
+</table>
+

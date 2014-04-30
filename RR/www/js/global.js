@@ -9,7 +9,6 @@ function fillSelectBox() {
     }
     catch(e){
       alert(e);
-
     }
 
     for(var i = 0, l = options.length; i < l; i++){

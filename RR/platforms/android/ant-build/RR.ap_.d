@@ -17,6 +17,7 @@ C:\wamp\www\Atosengine-dev-team\RR\platforms\android\assets\www\cordova.js \
 C:\wamp\www\Atosengine-dev-team\RR\platforms\android\assets\www\cordova_plugins.js \
 C:\wamp\www\Atosengine-dev-team\RR\platforms\android\assets\www\css \
 C:\wamp\www\Atosengine-dev-team\RR\platforms\android\assets\www\details.html \
+C:\wamp\www\Atosengine-dev-team\RR\platforms\android\assets\www\detailssssss.html \
 C:\wamp\www\Atosengine-dev-team\RR\platforms\android\assets\www\form.html \
 C:\wamp\www\Atosengine-dev-team\RR\platforms\android\assets\www\img \
 C:\wamp\www\Atosengine-dev-team\RR\platforms\android\assets\www\index.html \
